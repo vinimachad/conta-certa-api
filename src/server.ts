@@ -1,12 +1,17 @@
+import db from './database'
 import express from "express";
 import 'express-async-errors'
 import { routes } from './routes';
 
-const app = express()
+db().then(() => startServerSetup()).catch(error => console.log(`Failure ${error}`))
 
-app.use(express.json())
-app.use(routes)
+function startServerSetup() {
+    const app = express()
 
-app.listen(process.env.PORT || 3333, () => {
-    console.log('Server is running')
-})
+    app.use(express.json())
+    app.use(routes)
+
+    app.listen(process.env.PORT || 8080, () => {
+        console.log('Server is running')
+    })
+}
