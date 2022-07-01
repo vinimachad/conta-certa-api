@@ -1,5 +1,6 @@
 import db from './database'
 import express from "express";
+import './shared'
 import 'express-async-errors'
 import { routes } from './routes';
 
