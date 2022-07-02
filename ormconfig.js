@@ -6,16 +6,16 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     migrations: [
-        "./src/database/migrations/*.ts"
+        process.env.MIGRATION_PATH
     ],
-    entities: ["./src/modules/**/entities/*.ts"],
+    entities: [process.env.ENTITIES_PATH],
     cli: {
         migrationsDir: "./src/database/migrations"
     },
-    ssl: process.env.DB_HAS_SSL,
-    extra: {
-        ssl: {
-            rejectUnauthorized: false
-        }
-    }
+    // ssl: process.env.DB_HAS_SSL,
+    // extra: {
+    //     ssl: {
+    //         rejectUnauthorized: false
+    //     }
+    // }
 }
