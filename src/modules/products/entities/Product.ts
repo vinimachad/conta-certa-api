@@ -12,7 +12,7 @@ export class Product {
     @Column()
     ean: string
     @Column()
-    price: number
+    price?: number
 
     @CreateDateColumn()
     created_at: Date
@@ -20,7 +20,7 @@ export class Product {
     constructor(
         name: string,
         ean: string,
-        price: number
+        price?: number
     ) {
         this.name = name
         this.ean = ean
