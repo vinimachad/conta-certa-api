@@ -4,6 +4,7 @@ import { Product } from "../entities/Product"
 export interface IProductRepository {
     create(data: ProductDTO): Promise<Product>
     findByEan(id: string): Promise<Product>
+    list(): Promise<Product[]>
 }
 
 type ProductDTO = {
@@ -29,5 +30,9 @@ export class ProductRepository implements IProductRepository {
     async findByEan(ean: string): Promise<Product> {
         const products = await this.repository.find({ where: { ean } })
         return products.shift()
+    }
+
+    async list(): Promise<Product[]> {
+        return await this.repository.find()
     }
 }
